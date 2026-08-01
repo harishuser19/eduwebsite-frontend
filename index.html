@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduLearn - Premium Online Learning Platform</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0E8F88',
+              'teal-dark': '#0B736D',
+              orange: '#F5A623',
+              'orange-hover': '#E09319',
+              bg: '#FAFAFA',
+              text: '#222222',
+              gray: '#F2F2F2',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          },
+          boxShadow: {
+            'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+            'hover': '0 30px 60px -12px rgba(14, 143, 136, 0.12)',
+            'card': '0 10px 30px rgba(0,0,0,0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FAFAFA;
+      color: #222222;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism utility */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-dark {
+      background: rgba(14, 143, 136, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Decorative doodle stroke effects */
+    .underline-orange {
+      position: relative;
+      display: inline-block;
+    }
+    .underline-orange::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: #F5A623;
+      border-radius: 4px;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-xl bg-brand-teal flex items-center justify-center text-white font-bold text-xl shadow-md">
+          E
+        </div>
+        <span class="text-2xl font-bold tracking-tight text-brand-text">Edu<span class="text-brand-teal">Learn</span></span>
+      </a>
+
+      <!-- Center Links (Desktop) -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+        <a href="#find-sub" class="hover:text-brand-teal transition-colors">Find Sub</a>
+        <a href="#for-school" class="hover:text-brand-teal transition-colors">For School</a>
+        <a href="#resources" class="hover:text-brand-teal transition-colors">Resources</a>
+        <a href="#about" class="hover:text-brand-teal transition-colors">About Us</a>
+      </nav>
+
+      <!-- CTA Right -->
+      <div class="hidden md:flex items-center">
+        <a href="#contact" class="px-6 py-2.5 rounded-full border-2 border-brand-text text-brand-text font-semibold text-sm hover:bg-brand-text hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">
+          Make Appointment
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden p-2 text-gray-700 hover:text-brand-teal focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
+      <a href="#find-sub" class="block text-gray-600 font-medium py-1">Find Sub</a>
+      <a href="#for-school" class="block text-gray-600 font-medium py-1">For School</a>
+      <a href="#resources" class="block text-gray-600 font-medium py-1">Resources</a>
+      <a href="#about" class="block text-gray-600 font-medium py-1">About Us</a>
+      <a href="#contact" class="inline-block mt-2 px-6 py-2 rounded-full border-2 border-brand-text text-brand-text font-semibold text-sm">Make Appointment</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Left Column -->
+        <div class="lg:col-span-6 z-10" data-aos="fade-right" data-aos-duration="1000">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-text leading-[1.15] tracking-tight mb-6">
+            Keep <span class="underline-orange">Learning</span> on Track
+          </h1>
+          <p class="text-lg text-gray-600 mb-8 max-w-xl leading-relaxed font-normal">
+            When schools and districts have reliable access to substitute teachers and subs have the freedom to choose what and when they teach.
+          </p>
+
+          <!-- Primary CTA Button -->
+          <div class="mb-12">
+            <a href="#get-started" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-orange text-white font-semibold text-base hover:bg-brand-orange-hover transition-all duration-300 shadow-lg shadow-brand-orange/30 hover:scale-[1.02]">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Floating Info Cards Array (Bottom Left Hero) -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 max-w-xl">
+            
+            <!-- Card 1: Certified Teacher -->
+            <div class="sm:col-span-7 bg-white p-4 rounded-2xl shadow-card border border-gray-100 flex items-center gap-4 hover:shadow-soft transition-shadow">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Female Teacher" class="w-14 h-14 rounded-xl object-cover" />
+              <div>
+                <p class="text-xs font-medium text-gray-500">Best Certified Teacher Worldwide</p>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-xl font-bold text-brand-text">210+</span>
+                  <span class="text-xs text-gray-400">Expert already join us</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Transforming Schools -->
+            <div class="sm:col-span-5 bg-white p-4 rounded-2xl shadow-card border border-gray-100 flex items-center gap-3 hover:shadow-soft transition-shadow">
+              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=200" alt="Classroom" class="w-10 h-10 rounded-lg object-cover" />
+              <p class="text-xs font-semibold text-brand-text leading-snug">
+                Transforming schools & substitute teachers
+              </p>
+            </div>
+
+            <!-- Card 3: Quick Action Arrow -->
+            <div class="hidden sm:flex sm:col-span-12 justify-end">
+              <a href="#about" class="w-10 h-10 bg-white border border-gray-100 rounded-xl shadow-card flex items-center justify-center text-brand-teal hover:bg-brand-teal hover:text-white transition-all duration-300">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Hero Right Column (Illustrative Composition) -->
+        <div class="lg:col-span-6 relative flex justify-center items-center" data-aos="fade-left" data-aos-duration="1000">
+          
+          <!-- Background Abstract Rounded Teal Blob -->
+          <div class="absolute w-[80%] h-[85%] bg-brand-teal rounded-[3rem] -rotate-3 -z-10 flex items-center justify-center p-8 opacity-95 shadow-xl">
+            <!-- Decorative Doodles Over Teal Layer -->
+            <div class="absolute inset-0 opacity-15 flex flex-wrap justify-between p-6 pointer-events-none text-white">
+              <i data-lucide="backpack" class="w-12 h-12"></i>
+              <i data-lucide="pencil" class="w-10 h-10"></i>
+              <i data-lucide="lightbulb" class="w-12 h-12"></i>
+              <i data-lucide="book-open" class="w-10 h-10"></i>
+              <i data-lucide="graduation-cap" class="w-14 h-14"></i>
+            </div>
+          </div>
+
+          <!-- Main Hero Image (Happy Boy Student) -->
+          <div class="relative z-10 max-w-sm sm:max-w-md">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=800" alt="Happy Student with Books" class="rounded-3xl object-cover shadow-2xl" />
+          </div>
+
+          <!-- Playful Decorative Floating Accents -->
+          <div class="absolute top-4 right-4 z-20 text-brand-orange animate-bounce">
+            <svg width="40" height="40" viewBox="0 0 50 50" fill="none">
+              <path d="M25 0L28 18L46 25L28 32L25 50L22 32L4 25L22 18L25 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          
+          <div class="absolute -bottom-6 -left-4 z-20 hidden sm:block">
+            <div class="glass-card px-4 py-3 rounded-2xl flex items-center gap-3 shadow-soft">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span class="text-xs font-semibold text-brand-text">Active Substitutes Online</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND SECTION (FEATURES & MANAGEMENT) -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <!-- Section Header (Two Column) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+        <div class="lg:col-span-6" data-aos="fade-up">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight leading-tight">
+            An <span class="relative inline-block text-brand-teal">Easier<svg class="absolute -bottom-2 left-0 w-full h-3 text-brand-orange" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0 15 Q 50 0, 100 15" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span> Way to be Sub and Find Sub
+          </h2>
+        </div>
+        <div class="lg:col-span-6" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-gray-600 text-base leading-relaxed">
+            EduLearn bridges the communication gap between educational institutions and qualified educators. Our intelligent matching platform simplifies scheduling, guarantees coverage, and keeps learning seamless.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card hover:shadow-hover hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-brand-teal mb-6">
+            <i data-lucide="calendar-off" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-brand-text mb-3">Teacher Absences</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Automated instant notifications fill last-minute absence requests within minutes.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card hover:shadow-hover hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center text-brand-orange mb-6">
+            <i data-lucide="line-chart" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-brand-text mb-3">Student Learning Stays on Track</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Ensure lesson plans are executed seamlessly with certified, vetted subject teachers.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card hover:shadow-hover hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-brand-teal mb-6">
+            <i data-lucide="users" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-brand-text mb-3">Better Substitute Management</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Centralized dashboard for tracking credentials, payouts, and performance ratings.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES & STATS SECTION -->
+  <section class="py-20 bg-brand-bg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight">
+          Why Choose Our Services?
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column Image -->
+        <div class="lg:col-span-5" data-aos="fade-right">
+          <div class="relative">
+            <div class="absolute inset-0 bg-brand-teal rounded-3xl rotate-3 -z-10 opacity-20"></div>
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" alt="Smiling Student with Books" class="rounded-3xl shadow-lg object-cover w-full h-[450px]" />
+          </div>
+        </div>
+
+        <!-- Right Column Stats Cards -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+          
+          <!-- Stat Card 1 -->
+          <div class="glass-dark p-6 rounded-3xl text-white flex items-center justify-between shadow-lg hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-5">
+              <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white">
+                <i data-lucide="smile" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-3xl font-extrabold">3k+</h4>
+                <p class="text-teal-100 text-sm">Happy Students</p>
+              </div>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white/60"></i>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div class="bg-brand-orange p-6 rounded-3xl text-white flex items-center justify-between shadow-lg hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-5">
+              <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white">
+                <i data-lucide="school" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-3xl font-extrabold">300+</h4>
+                <p class="text-amber-100 text-sm">Partner Schools</p>
+              </div>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white/60"></i>
+          </div>
+
+          <!-- Stat Card 3 -->
+          <div class="glass-dark p-6 rounded-3xl text-white flex items-center justify-between shadow-lg hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-5">
+              <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-3xl font-extrabold">48+</h4>
+                <p class="text-teal-100 text-sm">Countries Reached</p>
+              </div>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white/60"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text">Loved by Students & Schools</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Testimonial 1 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <div class="flex text-amber-400 gap-1 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              "Finding a reliable sub used to take hours of calling. With EduLearn, we book qualified teachers in just a few clicks."
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Sarah Jenkins" class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <h4 class="font-bold text-brand-text text-sm">Sarah Jenkins</h4>
+              <p class="text-xs text-gray-500">School Administrator</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+          <div>
+            <div class="flex text-amber-400 gap-1 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              "I love the flexibility! I can choose my preferred schools and schedules effortlessly. EduLearn changed my teaching career."
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="David Chen" class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <h4 class="font-bold text-brand-text text-sm">David Chen</h4>
+              <p class="text-xs text-gray-500">Substitute Educator</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-brand-bg p-8 rounded-3xl border border-gray-100 shadow-card flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="flex text-amber-400 gap-1 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              "Our classroom routines never lose momentum anymore. The quality of substitute teachers on EduLearn is top-tier."
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=150" alt="Elena Rostova" class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <h4 class="font-bold text-brand-text text-sm">Elena Rostova</h4>
+              <p class="text-xs text-gray-500">District Coordinator</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOG SECTION -->
+  <section class="py-20 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12" data-aos="fade-up">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text">Latest Educational Insights</h2>
+          <p class="text-gray-500 text-sm mt-2">Tips and trends for modern educators and district leaders</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Blog 1 -->
+        <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-card hover:shadow-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="overflow-hidden h-48">
+            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=600" alt="Classroom Management" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-lg text-brand-text mb-2 group-hover:text-brand-teal transition-colors">
+              5 Classroom Management Secrets for New Subs
+            </h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-6">
+              Learn how to quickly establish authority and rapport with students on day one.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-orange font-semibold text-sm hover:gap-3 transition-all">
+              Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-card hover:shadow-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="overflow-hidden h-48">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600" alt="Tech in Education" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-lg text-brand-text mb-2 group-hover:text-brand-teal transition-colors">
+              Integrating EdTech in Temporary Lesson Plans
+            </h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-6">
+              How digital tools can make substitute teaching days engaging and interactive.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-orange font-semibold text-sm hover:gap-3 transition-all">
+              Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-card hover:shadow-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="overflow-hidden h-48">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600" alt="School Leadership" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-lg text-brand-text mb-2 group-hover:text-brand-teal transition-colors">
+              Building Resilient Teacher Coverage Networks
+            </h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-6">
+              Strategies for district leaders to combat educator burnouts and leave gaps.
+            </p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-orange font-semibold text-sm hover:gap-3 transition-all">
+              Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FOOTER SECTION -->
+  <footer class="py-12 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <!-- Full Width Rounded Teal CTA Box -->
+      <div class="bg-brand-teal rounded-4xl p-8 sm:p-16 text-white relative overflow-hidden shadow-2xl" data-aos="zoom-in">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <!-- Left: Smiling Child Image -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-start">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=500" alt="Smiling Child" class="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-white/20 shadow-xl" />
+          </div>
+
+          <!-- Right: Action Text & Button -->
+          <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">
+              Join Our Community
+            </h2>
+            <p class="text-teal-100 max-w-lg text-sm sm:text-base leading-relaxed">
+              Whether you are looking to find substitute teaching jobs or secure top tier teaching talent for your school, EduLearn is here to help.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-orange text-white font-semibold hover:bg-brand-orange-hover transition-all shadow-lg hover:scale-[1.02]">
+                Get In Touch
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Decorative background circle -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="mt-12 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 gap-4 border-t border-gray-200/60 pt-8">
+        <p>&copy; 2026 EduLearn Inc. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-brand-teal">Privacy Policy</a>
+          <a href="#" class="hover:text-brand-teal">Terms of Service</a>
+          <a href="#" class="hover:text-brand-teal">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Initialize Scroll Animations
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out-cubic',
+    });
+
+    // Mobile Navigation Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduLearn - Advanced Learning & Substitute Platform</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0E8F88',
+              'teal-dark': '#0B736D',
+              orange: '#F5A623',
+              'orange-hover': '#E09319',
+              bg: '#FAFAFA',
+              text: '#222222',
+              gray: '#F2F2F2',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          },
+          boxShadow: {
+            'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+            'hover': '0 30px 60px -12px rgba(14, 143, 136, 0.12)',
+            'card': '0 10px 30px rgba(0,0,0,0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FAFAFA;
+      color: #222222;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism utility */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .glass-dark {
+      background: rgba(14, 143, 136, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .underline-orange {
+      position: relative;
+      display: inline-block;
+    }
+    .underline-orange::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: #F5A623;
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    /* Modal Animation */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .modal-enter-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 300ms ease-out, transform 300ms ease-out;
+    }
+  </style>
+</head>
+<body class="antialiased relative">
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-xl bg-brand-teal flex items-center justify-center text-white font-bold text-xl shadow-md">
+          E
+        </div>
+        <span class="text-2xl font-bold tracking-tight text-brand-text">Edu<span class="text-brand-teal">Learn</span></span>
+      </a>
+
+      <!-- Center Links (Desktop) -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+        <a href="#find-sub" class="hover:text-brand-teal transition-colors">Find Sub</a>
+        <a href="#calculator" class="hover:text-brand-teal transition-colors">Cost Estimator</a>
+        <a href="#interactive-quiz" class="hover:text-brand-teal transition-colors">Skill Quiz</a>
+        <a href="#for-school" class="hover:text-brand-teal transition-colors">For School</a>
+      </nav>
+
+      <!-- Right Action Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <button onclick="openModal('login')" class="px-5 py-2.5 rounded-full border border-gray-300 text-brand-text font-medium text-sm hover:border-brand-teal hover:text-brand-teal transition-all duration-300">
+          Log In
+        </button>
+        <button onclick="openModal('register')" class="px-6 py-2.5 rounded-full bg-brand-teal text-white font-semibold text-sm hover:bg-brand-teal-dark transition-all duration-300 shadow-sm hover:shadow-md">
+          Get Started
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden p-2 text-gray-700 hover:text-brand-teal focus:outline-none">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-3">
+      <a href="#find-sub" class="block text-gray-600 font-medium py-1">Find Sub</a>
+      <a href="#calculator" class="block text-gray-600 font-medium py-1">Cost Estimator</a>
+      <a href="#interactive-quiz" class="block text-gray-600 font-medium py-1">Skill Quiz</a>
+      <div class="pt-2 flex flex-col gap-2">
+        <button onclick="openModal('login')" class="w-full py-2.5 rounded-full border border-gray-300 text-brand-text font-medium text-sm">Log In</button>
+        <button onclick="openModal('register')" class="w-full py-2.5 rounded-full bg-brand-teal text-white font-semibold text-sm">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <div class="lg:col-span-6 z-10" data-aos="fade-right" data-aos-duration="1000">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-text leading-[1.15] tracking-tight mb-6">
+            Keep <span class="underline-orange">Learning</span> on Track
+          </h1>
+          <p class="text-lg text-gray-600 mb-8 max-w-xl leading-relaxed font-normal">
+            When schools and districts have reliable access to substitute teachers and subs have the freedom to choose what and when they teach.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mb-12">
+            <button onclick="openModal('register')" class="px-8 py-4 rounded-full bg-brand-orange text-white font-semibold text-base hover:bg-brand-orange-hover transition-all duration-300 shadow-lg shadow-brand-orange/30 hover:scale-[1.02]">
+              Join as Educator
+            </button>
+            <a href="#find-sub" class="px-8 py-4 rounded-full bg-white border border-gray-200 text-brand-text font-semibold text-base hover:border-brand-teal transition-all duration-300 shadow-sm">
+              Explore Subs
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 max-w-xl">
+            <div class="sm:col-span-7 bg-white p-4 rounded-2xl shadow-card border border-gray-100 flex items-center gap-4 hover:shadow-soft transition-shadow">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Female Teacher" class="w-14 h-14 rounded-xl object-cover" />
+              <div>
+                <p class="text-xs font-medium text-gray-500">Best Certified Teacher Worldwide</p>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-xl font-bold text-brand-text">210+</span>
+                  <span class="text-xs text-gray-400">Experts active now</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sm:col-span-5 bg-white p-4 rounded-2xl shadow-card border border-gray-100 flex items-center gap-3 hover:shadow-soft transition-shadow">
+              <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-brand-teal font-bold">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+              </div>
+              <p class="text-xs font-semibold text-brand-text leading-snug">
+                100% Background Vetted
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 relative flex justify-center items-center" data-aos="fade-left" data-aos-duration="1000">
+          <div class="absolute w-[80%] h-[85%] bg-brand-teal rounded-[3rem] -rotate-3 -z-10 flex items-center justify-center p-8 opacity-95 shadow-xl">
+            <div class="absolute inset-0 opacity-15 flex flex-wrap justify-between p-6 pointer-events-none text-white">
+              <i data-lucide="backpack" class="w-12 h-12"></i>
+              <i data-lucide="pencil" class="w-10 h-10"></i>
+              <i data-lucide="lightbulb" class="w-12 h-12"></i>
+              <i data-lucide="book-open" class="w-10 h-10"></i>
+              <i data-lucide="graduation-cap" class="w-14 h-14"></i>
+            </div>
+          </div>
+
+          <div class="relative z-10 max-w-sm sm:max-w-md">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=800" alt="Happy Student with Books" class="rounded-3xl object-cover shadow-2xl" />
+          </div>
+
+          <div class="absolute -bottom-6 -left-4 z-20 hidden sm:block">
+            <div class="glass-card px-4 py-3 rounded-2xl flex items-center gap-3 shadow-soft">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span class="text-xs font-semibold text-brand-text">Instant Matching Active</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANCED FEATURE 1: INTERACTIVE DIRECTORY & FINDER -->
+  <section id="find-sub" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text">Find Available Substitutes</h2>
+        <p class="text-gray-500 text-sm mt-2">Filter certified educators by subject and availability in real time.</p>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="bg-brand-bg p-6 rounded-3xl border border-gray-100 shadow-card mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between" data-aos="fade-up">
+        <div class="relative w-full sm:w-96">
+          <i data-lucide="search" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="teacher-search" placeholder="Search by name or subject..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-brand-teal text-sm bg-white" oninput="filterTeachers()" />
+        </div>
+        <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+          <button onclick="setFilter('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-brand-teal text-white">All Subjects</button>
+          <button onclick="setFilter('Math')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:border-brand-teal">Mathematics</button>
+          <button onclick="setFilter('Science')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:border-brand-teal">Science</button>
+          <button onclick="setFilter('English')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:border-brand-teal">English</button>
+        </div>
+      </div>
+
+      <!-- Teacher Cards Grid -->
+      <div id="teacher-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Javascript renders filtered teachers here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANCED FEATURE 2: SCHOOL SAVINGS & COVERAGE CALCULATOR -->
+  <section id="calculator" class="py-20 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6" data-aos="fade-right">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text mb-4">Calculate District Coverage & Efficiency</h2>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6">
+            Estimate your monthly coverage costs and time saved by automating substitute teacher placement with EduLearn's platform.
+          </p>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center"><i data-lucide="check" class="w-4 h-4"></i></div>
+              98.4% Average placement fulfillment rate
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center"><i data-lucide="check" class="w-4 h-4"></i></div>
+              Automated compliance and background check tracking
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center"><i data-lucide="check" class="w-4 h-4"></i></div>
+              Instant digital payroll consolidation
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-6 bg-white p-8 rounded-3xl shadow-card border border-gray-100" data-aos="fade-left">
+          <h3 class="font-bold text-lg text-brand-text mb-6">Interactive Cost Estimator</h3>
+          
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                <span>Monthly Absence Days:</span>
+                <span id="days-val" class="font-bold text-brand-teal">25 Days</span>
+              </div>
+              <input type="range" id="days-input" min="5" max="100" value="25" class="w-full accent-brand-teal" oninput="updateCalculator()" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                <span>Average Daily Sub Rate ($):</span>
+                <span id="rate-val" class="font-bold text-brand-teal">$150/day</span>
+              </div>
+              <input type="range" id="rate-input" min="100" max="300" step="10" value="150" class="w-full accent-brand-teal" oninput="updateCalculator()" />
+            </div>
+
+            <div class="pt-6 border-t border-gray-100 grid grid-cols-2 gap-4 text-center">
+              <div class="bg-brand-bg p-4 rounded-2xl">
+                <span class="text-xs text-gray-500 block">Est. Administrative Time Saved</span>
+                <span id="time-saved" class="text-2xl font-extrabold text-brand-text">37.5 hrs</span>
+              </div>
+              <div class="bg-amber-50 p-4 rounded-2xl">
+                <span class="text-xs text-amber-800 block">Platform Savings Value</span>
+                <span id="cost-saved" class="text-2xl font-extrabold text-brand-orange">$937</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANCED FEATURE 3: INTERACTIVE EDUCATOR SKILL QUIZ -->
+  <section id="interactive-quiz" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-12">
+      <div class="bg-brand-teal rounded-3xl p-8 sm:p-12 text-white shadow-xl" data-aos="zoom-in">
+        <div id="quiz-container">
+          <span class="text-xs font-semibold uppercase tracking-wider text-teal-200">Educator Self-Assessment</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-6" id="quiz-question">Ready to test your classroom readiness score?</h2>
+          
+          <div id="quiz-options" class="space-y-3">
+            <button onclick="startQuiz()" class="w-full py-4 bg-brand-orange text-white font-bold rounded-2xl hover:bg-brand-orange-hover transition-all">
+              Start 3-Question Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN / REGISTER MODAL SYSTEM -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-300">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative overflow-hidden modal-enter" id="modal-content">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-brand-text transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Toggle Tabs -->
+      <div class="flex border-b border-gray-100 mb-6">
+        <button id="tab-login" onclick="switchTab('login')" class="flex-1 pb-3 text-sm font-bold border-b-2 border-brand-teal text-brand-teal">
+          Log In
+        </button>
+        <button id="tab-register" onclick="switchTab('register')" class="flex-1 pb-3 text-sm font-bold border-b-2 border-transparent text-gray-400">
+          Create Account
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="form-login" onsubmit="handleAuth(event, 'Login')" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Email Address</label>
+          <input type="email" required placeholder="teacher@school.edu" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal" />
+        </div>
+        <div class="flex items-center justify-between text-xs text-gray-500">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" class="accent-brand-teal rounded" />
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="text-brand-teal font-medium hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-teal text-white font-semibold text-sm hover:bg-brand-teal-dark transition-all">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" onsubmit="handleAuth(event, 'Registration')" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Full Name</label>
+          <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Account Role</label>
+          <select class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal bg-white">
+            <option>Substitute Educator</option>
+            <option>School Administrator</option>
+            <option>District Coordinator</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Email Address</label>
+          <input type="email" required placeholder="teacher@school.edu" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Create Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-brand-teal" />
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-orange text-white font-semibold text-sm hover:bg-brand-orange-hover transition-all">
+          Create Account
+        </button>
+      </form>
+
+      <!-- Status Notification Toast Inside Modal -->
+      <div id="auth-alert" class="hidden mt-4 p-3 rounded-xl text-xs text-center font-medium"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center text-xs text-gray-400">
+      <p>&copy; 2026 EduLearn Inc. Advanced Education Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Initialize Lucide Icons & AOS
+    lucide.createIcons();
+    AOS.init({ once: true, duration: 800 });
+
+    // Mobile Navigation Toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // --- AUTHENTICATION MODAL SYSTEM ---
+    function openModal(tab = 'login') {
+      const modal = document.getElementById('auth-modal');
+      modal.classList.remove('hidden');
+      switchTab(tab);
+    }
+
+    function closeModal() {
+      document.getElementById('auth-modal').classList.add('hidden');
+      document.getElementById('auth-alert').classList.add('hidden');
+    }
+
+    function switchTab(tab) {
+      const loginTab = document.getElementById('tab-login');
+      const regTab = document.getElementById('tab-register');
+      const loginForm = document.getElementById('form-login');
+      const regForm = document.getElementById('form-register');
+
+      if (tab === 'login') {
+        loginTab.className = "flex-1 pb-3 text-sm font-bold border-b-2 border-brand-teal text-brand-teal";
+        regTab.className = "flex-1 pb-3 text-sm font-bold border-b-2 border-transparent text-gray-400";
+        loginForm.classList.remove('hidden');
+        regForm.classList.add('hidden');
+      } else {
+        regTab.className = "flex-1 pb-3 text-sm font-bold border-b-2 border-brand-teal text-brand-teal";
+        loginTab.className = "flex-1 pb-3 text-sm font-bold border-b-2 border-transparent text-gray-400";
+        regForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+      }
+    }
+
+    function handleAuth(e, type) {
+      e.preventDefault();
+      const alertBox = document.getElementById('auth-alert');
+      alertBox.classList.remove('hidden');
+      alertBox.className = "mt-4 p-3 rounded-xl text-xs text-center font-medium bg-emerald-100 text-emerald-800";
+      alertBox.innerText = `${type} successful! Redirecting to dashboard...`;
+      setTimeout(() => {
+        closeModal();
+      }, 1500);
+    }
+
+    // --- FEATURE 1: TEACHER DIRECTORY FILTER ---
+    const teachers = [
+      { name: "Dr. Sarah Jenkins", subject: "Science", rating: "4.9", hourly: "$45", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" },
+      { name: "Marcus Vance", subject: "Math", rating: "4.8", hourly: "$40", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" },
+      { name: "Elena Rostova", subject: "English", rating: "5.0", hourly: "$50", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=200" }
+    ];
+
+    let currentFilter = 'all';
+
+    function renderTeachers() {
+      const grid = document.getElementById('teacher-grid');
+      const searchVal = document.getElementById('teacher-search').value.toLowerCase();
+      
+      const filtered = teachers.filter(t => {
+        const matchesFilter = currentFilter === 'all' || t.subject === currentFilter;
+        const matchesSearch = t.name.toLowerCase().includes(searchVal) || t.subject.toLowerCase().includes(searchVal);
+        return matchesFilter && matchesSearch;
+      });
+
+      grid.innerHTML = filtered.map(t => `
+        <div class="bg-brand-bg p-6 rounded-3xl border border-gray-100 shadow-card flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <img src="${t.img}" class="w-14 h-14 rounded-2xl object-cover" />
+            <div>
+              <h4 class="font-bold text-brand-text text-sm">${t.name}</h4>
+              <p class="text-xs text-gray-500">${t.subject} Specialist</p>
+              <div class="flex items-center gap-1 text-xs text-amber-500 mt-1">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> ${t.rating}
+              </div>
+            </div>
+          </div>
+          <button onclick="openModal('login')" class="px-3 py-2 rounded-xl bg-white border border-gray-200 text-xs font-semibold text-brand-teal hover:bg-brand-teal hover:text-white transition-all">
+            Book
+          </button>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function setFilter(subject) {
+      currentFilter = subject;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.className = "filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:border-brand-teal";
+      });
+      event.target.className = "filter-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-brand-teal text-white";
+      renderTeachers();
+    }
+
+    function filterTeachers() {
+      renderTeachers();
+    }
+    renderTeachers();
+
+    // --- FEATURE 2: CALCULATOR ---
+    function updateCalculator() {
+      const days = document.getElementById('days-input').value;
+      const rate = document.getElementById('rate-input').value;
+      
+      document.getElementById('days-val').innerText = `${days} Days`;
+      document.getElementById('rate-val').innerText = `$${rate}/day`;
+
+      const hoursSaved = (days * 1.5).toFixed(1);
+      const savings = Math.round(days * rate * 0.25);
+
+      document.getElementById('time-saved').innerText = `${hoursSaved} hrs`;
+      document.getElementById('cost-saved').innerText = `$${savings}`;
+    }
+
+    // --- FEATURE 3: QUIZ SYSTEM ---
+    const quizData = [
+      { q: "What is the primary action when stepping into a new classroom?", opts: ["Review emergency protocols & lesson plan", "Start lecturing immediately", "Allow free study time"], correct: 0 },
+      { q: "How do you maintain continuous learning when lesson plans are minimal?", opts: ["Dismiss class early", "Utilize EduLearn interactive subject modules", "Wait for the bell"], correct: 1 }
+    ];
+    let quizStep = 0;
+
+    function startQuiz() {
+      showQuestion();
+    }
+
+    function showQuestion() {
+      if (quizStep >= quizData.length) {
+        document.getElementById('quiz-container').innerHTML = `
+          <h3 class="text-2xl font-bold mb-2">Assessment Complete! 🎉</h3>
+          <p class="text-teal-100 text-sm mb-6">Your classroom readiness score is 100%. Sign up today to get certified.</p>
+          <button onclick="openModal('register')" class="px-6 py-3 bg-brand-orange text-white font-bold rounded-2xl">Create Educator Profile</button>
+        `;
+        return;
+      }
+      const item = quizData[quizStep];
+      document.getElementById('quiz-question').innerText = item.q;
+      document.getElementById('quiz-options').innerHTML = item.opts.map((opt, idx) => `
+        <button onclick="answerQuiz(${idx})" class="w-full text-left p-4 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-sm font-medium">
+          ${opt}
+        </button>
+      `).join('');
+    }
+
+    function answerQuiz(idx) {
+      quizStep++;
+      showQuestion();
+    }
+  </script>
+</body>
+</html>
